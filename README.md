@@ -1,6 +1,6 @@
 # ClamAV REST Service
 
-Official [Cisco-Talos/clamav](https://github.com/Cisco-Talos/clamav) docker image with a REST API enhancement for file scanning.
+Official [Cisco-Talos/clamav](https://github.com/Cisco-Talos/clamav) docker image with a REST API enhancement for file scanning. ClamAV is contained.
 
 ## User Information
 
@@ -12,10 +12,13 @@ API Endpoints:
 http://<<your-address>>:33779/scan-document
 ```
 
-| Key                                | Description                                                      | Default-Value |
-| ---------------------------------- | ---------------------------------------------------------------- | ------------- |
-| CLAMAV_REST_CLAMAV_EXECUTION_PATH  | Path to clamscan execution binary                                | clamdscan     |
-| CLAMAV_REST_REST_SCANFILE_FORM_KEY | HTTP form-file key where the file lives inside your HTTP request | file          |
+Custom ENV configuration options: ("CLAMAV*REST*" is the application prefix)
+| Key | Default-Value | Description |
+| ----------------------------------- | ------------- | -------------------------------------------- |
+| `CLAMAV_REST_CLAMAV_EXECUTION_PATH` | `clamdscan` | Path to clamscan execution binary |
+| `CLAMAV_REST_REST_SCANFILE_FORM_KEY` | `file` | HTTP form-file key where the file lives inside your HTTP request |
+
+Beside that options you can pass all other clamav configuration options
 
 ## Developer information
 
