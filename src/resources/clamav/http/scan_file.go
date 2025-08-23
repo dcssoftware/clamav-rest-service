@@ -1,6 +1,7 @@
 package http
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 
@@ -13,28 +14,29 @@ func (h *ClamAVHandler) ScanFile(c *fiber.Ctx) error {
 	// get file from body
 	formFile, formFileErr := c.FormFile(configuration.REST.SCANFILE_FORM_KEY)
 	if formFileErr != nil {
-		return c.SendStatus(http.StatusBadRequest)
+		return c.Status(http.StatusBadRequest).SendString("")
 	}
 
 	file, fileErr := formFile.Open()
 	if fileErr != nil {
-		return c.SendStatus(http.StatusBadRequest)
+		fmt.Println(fileErr.Error())
+		return c.Status(http.StatusBadRequest).SendString("")
 	}
 
 	defer file.Close()
 
 	fileContent, fileContentErr := io.ReadAll(file)
 	if fileContentErr != nil {
-		return c.SendStatus(http.StatusBadRequest)
+		fmt.Println(fileContentErr.Error())
+		return c.Status(http.StatusBadRequest).SendString("")
 	}
 
 	// request service layer
 	err := h.service.ScanFile(fileContent)
 	if err != nil {
-		return c.SendStatus(http.StatusUnprocessableEntity)
+		fmt.Println(err.Error())
+		return c.Status(http.StatusUnprocessableEntity).SendString("")
 	}
 
-	c.SendStatus(http.StatusOK)
-
-	return nil
+	return c.Status(http.StatusOK).SendString("")
 }
