@@ -30,6 +30,8 @@ Beside that options you can pass all other clamav configuration options
 
 Do not rely on the rest api for health check purposes because it starts async from claimav. claimav itsself always takes longer
 
+Use [this official clamav healthcheck](https://github.com/Cisco-Talos/clamav/blob/main/README.Docker.md#container-clamd-health-check) instead
+
 ## Developer information
 
 Build a docker image:
