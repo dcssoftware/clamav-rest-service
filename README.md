@@ -26,6 +26,12 @@ Custom ENV configuration options: ("CLAMAV*REST*" is the application prefix)
 
 Beside that options you can pass all other clamav configuration options
 
+## SDKs:
+
+- [Golang SDK (dcssoftware)](https://github.com/dcssoftware/clamav-rest-go-sdk)
+
+If you want to contribute an SDK in your prefered language, it's simple to implement and after you're done, let us know and we'll add you to the list
+
 ### Healthcheck
 
 Do not rely on the rest api for health check purposes because it starts async from claimav. claimav itsself always takes longer
