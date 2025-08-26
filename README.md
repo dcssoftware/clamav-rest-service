@@ -26,7 +26,7 @@ Custom ENV configuration options: ("CLAMAV*REST*" is the application prefix)
 
 Beside that options you can pass all other clamav configuration options
 
-## SDKs:
+### SDKs:
 
 - [Golang SDK (dcssoftware)](https://github.com/dcssoftware/clamav-rest-go-sdk)
 
